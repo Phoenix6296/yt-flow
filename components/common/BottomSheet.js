@@ -36,7 +36,7 @@ export const BottomSheet = ({
   return (
     <div
       ref={ref}
-      className="fixed h-full w-full bottom-0 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 z-50 flex items-end justify-center"
+      className="fixed h-full w-full bottom-0 left-1/2 transform -translate-x-1/2 backdrop-blur bg-black bg-opacity-50 z-50 flex items-end justify-center"
       onClick={onClose}
     >
       <div

@@ -3,9 +3,12 @@ import { useState } from "react";
 import { EnterPhoneModal } from "../../components/Blocks";
 import Image from "next/image";
 import { Button } from "../../components/common/Button";
+import { OTPModal } from "../../components/Blocks/OTPModal";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
+  const [phoneno, setPhoneno] = useState("");
   return (
     <section className="flex flex-col items-center justify-evenly h-[100dvh]">
       <Image src="/common/logo.svg" alt="logo" width={160} height={150} />
@@ -36,7 +39,17 @@ export default function Home() {
           </p>
         </div>
       </div>
-      <EnterPhoneModal isVisible={showModal} setIsVisible={setShowModal} />
+      <EnterPhoneModal
+        isVisible={showModal}
+        setIsVisible={setShowModal}
+        setOtpSent={setOtpSent}
+        setPhoneno={setPhoneno}
+      />
+      <OTPModal
+        isVisible={otpSent}
+        setIsVisible={setOtpSent}
+        phoneno={phoneno}
+      />
     </section>
   );
 }

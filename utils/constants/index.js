@@ -1,3 +1,6 @@
+export const ACCESS_TOKEN_KEY = "oia_yt_flow_access_token_openinapp";
+export const REFRESH_TOKEN_KEY = "oia_yt_flow_refresh_token_openinapp";
+
 export const COUNTRY_CODE = [
   {
     name: "India",
