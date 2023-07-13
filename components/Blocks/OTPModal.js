@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import OTPInput from "react-otp-input";
-import { BottomSheet } from "../common/BottomSheet";
-import { Button } from "../common/Button";
+import { BottomSheet, Button } from "../common";
 import { submitOTP } from "../../utils/apis/OTP";
 import { useRouter } from "next/navigation";
 

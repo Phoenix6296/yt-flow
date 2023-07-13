@@ -1,9 +1,8 @@
 "use client";
 import { useState } from "react";
-import { EnterPhoneModal } from "../../components/Blocks";
+import { EnterPhoneModal, OTPModal } from "../../components/Blocks";
 import Image from "next/image";
-import { Button } from "../../components/common/Button";
-import { OTPModal } from "../../components/Blocks/OTPModal";
+import { Button } from "../../components/common";
 
 export default function Home() {
   const [showModal, setShowModal] = useState(false);

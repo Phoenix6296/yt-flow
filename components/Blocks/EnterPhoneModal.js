@@ -1,8 +1,6 @@
-import { BottomSheet } from "../common/BottomSheet";
 import { useState } from "react";
 import Image from "next/image";
-import { Input } from "../common/Input";
-import { Button } from "../common/Button";
+import { Input, Button, BottomSheet } from "../common";
 import { submitForm } from "../../utils/apis/OTP";
 
 const INITIAL_COUNTRY_CODE = {

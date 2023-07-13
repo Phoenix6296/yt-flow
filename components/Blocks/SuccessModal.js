@@ -1,7 +1,5 @@
 import Image from "next/image";
-import { BottomSheet } from "../common/BottomSheet";
-import { Button } from "../common/Button";
-import { Modal } from "../common";
+import { BottomSheet, Button, Modal } from "../common";
 
 export const SuccessModal = ({ isVisible, setIsVisible }) => {
   return (
