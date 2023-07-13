@@ -22,6 +22,7 @@ export const SuccessModal = ({ isVisible, setIsVisible }) => {
             </h1>
             <Button
               title={"Take me to OpeninApp"}
+              rounded="rounded-full"
               className={"bg-primary text-white"}
             />
           </section>
@@ -33,7 +34,7 @@ export const SuccessModal = ({ isVisible, setIsVisible }) => {
           onClose={() => setIsVisible(!isVisible)}
           title="Connected Successfully"
         >
-          <section className="w-full items-center justify-center px-5 flex flex-col gap-7 py-10">
+          <section className="w-full items-center justify-center px-5 flex flex-col gap-7 py-5">
             <Image
               src="/common/tick-logo.svg"
               alt="success"
@@ -44,6 +45,7 @@ export const SuccessModal = ({ isVisible, setIsVisible }) => {
               Thank you for connecting your Youtube account with OpeninApp
             </h1>
             <Button
+              rounded="rounded-full"
               title={"Take me to OpeninApp"}
               className={"bg-primary text-white"}
             />

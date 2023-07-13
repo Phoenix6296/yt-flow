@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-import { Input, Button, BottomSheet } from "../common";
+import { Input, Button, Modal, BottomSheet } from "../common";
 import { submitForm } from "../../utils/apis/OTP";
 
 const INITIAL_COUNTRY_CODE = {
@@ -35,58 +35,113 @@ export const EnterPhoneModal = ({
   };
 
   return (
-    <div className="lg:hidden block">
-      <BottomSheet
-        isVisible={isVisible}
-        onClose={() => {
-          setCountryCode(INITIAL_COUNTRY_CODE);
-          setPhoneNo("");
-          setIsWhatsapp(false);
-          setIsVisible(!isVisible);
-        }}
-        title={"Enter phone number for OTP"}
-        isTitleBorder={false}
-      >
-        <form
-          onSubmit={handleSubmit}
-          className="w-full px-5 flex flex-col gap-7 pb-10"
+    <>
+      <div className="lg:hidden block">
+        <BottomSheet
+          isVisible={isVisible}
+          onClose={() => {
+            setCountryCode(INITIAL_COUNTRY_CODE);
+            setPhoneNo("");
+            setIsWhatsapp(false);
+            setIsVisible(!isVisible);
+          }}
+          title={"Enter phone number for OTP"}
+          isTitleBorder={false}
         >
-          <Input
-            placeholder={"Enter your phone no"}
-            isCountry={true}
-            type={"tel"}
-            countryCode={countryCode}
-            setCountryCode={setCountryCode}
-            value={phoneNo}
-            onChange={(e) => setPhoneNo(e.target.value)}
-          />
-          <div className="flex items-cente gap-2">
-            <input
-              type={"checkbox"}
-              value={isWhatsapp}
-              onChange={(e) => setIsWhatsapp(e.target.checked)}
+          <form
+            onSubmit={handleSubmit}
+            className="w-full px-5 flex flex-col gap-7 pb-10"
+          >
+            <Input
+              placeholder={"Enter your phone no"}
+              isCountry={true}
+              type={"tel"}
+              countryCode={countryCode}
+              setCountryCode={setCountryCode}
+              value={phoneNo}
+              onChange={(e) => setPhoneNo(e.target.value)}
             />
-            <div className="flex gap-2 items-center">
-              <span>Recieve on </span>
-              <Image
-                src="/common/whatsapp-logo.svg"
-                alt="whatsapp"
-                width={20}
-                height={20}
+            <div className="flex items-cente gap-2">
+              <input
+                type={"checkbox"}
+                value={isWhatsapp}
+                onChange={(e) => setIsWhatsapp(e.target.checked)}
               />
-              <span> Whatsppp</span>
+              <div className="flex gap-2 items-center">
+                <span>Recieve on </span>
+                <Image
+                  src="/common/whatsapp-logo.svg"
+                  alt="whatsapp"
+                  width={20}
+                  height={20}
+                />
+                <span> Whatsppp</span>
+              </div>
             </div>
-          </div>
-          <Button
-            title={"Continue"}
-            py={"py-4"}
-            rounded="rounded-full"
-            className={"bg-primary text-white"}
-            type={"submit"}
-            loading={loading}
-          />
-        </form>
-      </BottomSheet>
-    </div>
+            <Button
+              title={"Continue"}
+              py={"py-4"}
+              rounded="rounded-full"
+              className={"bg-primary text-white"}
+              type={"submit"}
+              loading={loading}
+            />
+          </form>
+        </BottomSheet>
+      </div>
+      <div className="lg:block hidden">
+        <Modal
+          isVisible={isVisible}
+          onClose={() => {
+            setCountryCode(INITIAL_COUNTRY_CODE);
+            setPhoneNo("");
+            setIsWhatsapp(false);
+            setIsVisible(!isVisible);
+          }}
+          title={"Enter phone number for OTP"}
+          isTitleBorder={false}
+        >
+          <form
+            onSubmit={handleSubmit}
+            className="w-full px-5 flex flex-col gap-7 py-5"
+          >
+            <Input
+              placeholder={"Enter your phone no"}
+              isCountry={true}
+              type={"tel"}
+              countryCode={countryCode}
+              setCountryCode={setCountryCode}
+              value={phoneNo}
+              onChange={(e) => setPhoneNo(e.target.value)}
+            />
+            <div className="flex items-cente gap-2">
+              <input
+                type={"checkbox"}
+                value={isWhatsapp}
+                onChange={(e) => setIsWhatsapp(e.target.checked)}
+              />
+              <div className="flex gap-2 items-center">
+                <span>Recieve on </span>
+                <Image
+                  src="/common/whatsapp-logo.svg"
+                  alt="whatsapp"
+                  width={20}
+                  height={20}
+                />
+                <span> Whatsppp</span>
+              </div>
+            </div>
+            <Button
+              title={"Continue"}
+              py={"py-4"}
+              rounded="rounded-full"
+              className={"bg-primary text-white"}
+              type={"submit"}
+              loading={loading}
+            />
+          </form>
+        </Modal>
+      </div>
+    </>
   );
 };

@@ -62,6 +62,7 @@ export default function YTflow() {
         title={"Connect Youtube"}
         className={"bg-primary text-white"}
         onClick={handleConnect}
+        rounded="rounded-full"
       />
       <SuccessModal isVisible={isVisible} setIsVisible={setIsVisible} />
     </section>

@@ -12,7 +12,7 @@ export default function Home() {
     <section className="flex flex-col items-center justify-evenly h-[100dvh]">
       <Image src="/common/logo.svg" alt="logo" width={160} height={150} />
       <Image src="/banner.svg" alt="banner" width={300} height={300} />
-      <div className="flex flex-col gap-14 w-full px-4">
+      <div className="flex flex-col gap-14 w-full px-4 justify-between">
         <div className="flex flex-col gap-8">
           <p className="text-xl text-center font-semibold">
             Login to OpeninApp
