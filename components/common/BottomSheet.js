@@ -1,7 +1,19 @@
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
+import useOutsideClick from "../../utils/hooks/useOutsideClick";
 
-export const BottomSheet = ({ isVisible, children, title, onClose, hide }) => {
+export const BottomSheet = ({
+  isVisible,
+  children,
+  title,
+  onClose,
+  hide,
+  isTitleBorder = true,
+}) => {
+  const ref = useRef(null);
+
+  useOutsideClick(ref, null, onClose);
+
   useEffect(() => {
     const bodyElement = document.getElementsByTagName("body");
     bodyElement[0].style.overflow = isVisible ? "hidden" : "";
@@ -17,23 +29,27 @@ export const BottomSheet = ({ isVisible, children, title, onClose, hide }) => {
     const bodyElement = document.getElementsByTagName("body");
     bodyElement[0].style.overflow = hide ? "hidden" : "";
   }, [hide]);
+
   if (hide) return;
   if (!isVisible) return;
+
   return (
-    <div className="fixed h-full w-full bottom-0 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 z-50">
+    <div
+      ref={ref}
+      className="fixed h-full w-full bottom-0 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 z-50 flex items-end justify-center"
+      onClick={onClose}
+    >
       <div
-        className={`flex flex-col absolute bottom-0 bg-white w-full rounded-t-2xl slide-in-bottom`}
+        className={`flex flex-col bg-white w-full rounded-t-2xl slide-in-bottom`}
+        onClick={(e) => e.stopPropagation()}
       >
         <div className="w-10 mx-auto h-1 rounded-full bg-lightBeerus my-2 cursor-pointer"></div>
-        <div className="flex items-center justify-between my-4 px-7">
-          <h1 className="text-xl leading-8 font-semibold tracking-wide text-black">
-            {title}
-          </h1>
-          <button onClick={onClose}>
-            <Image height={14} width={14} src="/common/close.svg" alt="close" />
-          </button>
-        </div>
-        <div className="border-b border-lightBeerus"></div>
+        <h1 className="text-xl font-semibold text-black text-center w-full my-4 mb-7 px-7">
+          {title}
+        </h1>
+        <div
+          className={`${isTitleBorder && "border-b border-lightBeerus"}`}
+        ></div>
         <div className="flex justify-center overflow-hidden">{children}</div>
       </div>
     </div>
